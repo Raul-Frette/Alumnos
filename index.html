@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //callback es una funcion que se pasa como argumento dentro de otra funcion y despues se utiliza luego de ejecutarse el primer argumento
+    function DescargarDatos(url, callback){
+        console.log(`Descargando Datos ${url}`)
+        setTimeout(()=>{
+            const datos="Datos simulados";
+            callback(datos)
+        },2000);
+    }
+
+    function ProcesarDatos(datos){
+        console.log(`Procesando datos: ${datos}`);
+    }
+    DescargarDatos("http://api.ejemplo.com", ProcesarDatos);
+
+    //Funcion flecha con muy utiles para funciones que solo tienen una linea de retorno implicita
+    //Funcion tradicional
+    function sumar(a,b){
+        return a+b;
+    }
+    //Funcion flecha
+    const SumarFlecha=(a,b)=>a+b;
+    console.log(SumarFlecha(3,5))//Da como resultado 8
+
+    //Pila=LIFO(Last in, First Out), lo ultimo que llega lo primero que sale 
+    class Pila{
+        constructor(){
+            this.elementos=[];
+        }
+        //Añadir elementos a la pila
+        apilar(elemento){
+            this.elementos.push(elemento);
+        }
+        //Quitar elemento de la pila
+        desapilar(elemento){
+            if(elementos.this.length===0){
+                return "La pila esta vacia";
+            }
+            return this.elementos.pop();
+        }
+        //Ver elemento superior de la pila
+        VerCima(){
+            return this.elementos[this.elementos.length-1];
+        }
+
+        //Verificar si esta vacia la pila
+        EstaVacia(){
+            return this.elementos.length===0;
+        }
+    }
+    const MiPila = new Pila();
+    MiPila.apilar(1);
+    MiPila.apilar(2);
+    console.log(MiPila.VerCima());//muestra el numero 2
+    console.log(MiPila.EstaVacia());//Muestra False
+</script>
